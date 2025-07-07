@@ -42,6 +42,8 @@ public class StudentManagementSystem {
                 System.out.println("Grade Level: ");
                 int stdGradeLevel = scan.nextInt();
                 
+                
+                
             case 3: 
                 
                 break;
