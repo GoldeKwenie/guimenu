@@ -42,9 +42,21 @@ public class StudentManagementSystem {
                 System.out.println("Grade Level: ");
                 int stdGradeLevel = scan.nextInt();
                 
+                studentAdmission admission = new studentAdmission (stdName, stdAge, stdGender, stdGradeLevel);
                 
+                System.out.println("\n Student Added!");
+                admissionArrayList.add(admission);
                 
             case 3: 
+                if (admissionArrayList.isEmpty()) {
+                    System.out.println("\n Empty List");
+                } else {
+                    for (studentAdmission stdObj : admissionArrayList) {
+                        stdObj.displaystudentAccount();
+                        System.out.println(" ");
+                                
+                    }
+                }
                 
                 break;
             default:
