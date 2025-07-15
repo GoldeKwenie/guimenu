@@ -20,7 +20,6 @@ public class StudentManagementSystem {
              System.out.println("[2] Add Course");
              System.out.println("[3] Display Student List");
              System.out.println("[4] Display Course");
-             System.out.println("[0] Exit");
              choice = scan.nextInt();
              scan.nextLine();
             
