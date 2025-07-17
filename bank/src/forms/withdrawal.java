@@ -17,6 +17,8 @@ public class withdrawal extends javax.swing.JFrame {
      */
     public withdrawal() {
         initComponents();
+        
+        balance.setText(String.valueOf(AccounData.balance));
     }
 
     /**
@@ -49,14 +51,20 @@ public class withdrawal extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Funds to withdraw: ");
 
+        funds.setBackground(new java.awt.Color(255, 255, 255));
+        funds.setForeground(new java.awt.Color(0, 0, 0));
+
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Withdrawal System");
 
+        balance.setBackground(new java.awt.Color(255, 255, 255));
+        balance.setForeground(new java.awt.Color(0, 0, 0));
+
         rawal.setBackground(new java.awt.Color(255, 255, 255));
         rawal.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        rawal.setForeground(new java.awt.Color(0, 51, 255));
+        rawal.setForeground(new java.awt.Color(0, 0, 0));
         rawal.setText("Submit");
         rawal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -78,14 +86,14 @@ public class withdrawal extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(31, 31, 31)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(funds, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(balance, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(balance, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                                    .addComponent(funds)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(131, 131, 131)
                         .addComponent(rawal)))
-                .addContainerGap(130, Short.MAX_VALUE))
+                .addContainerGap(86, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -120,13 +128,15 @@ public class withdrawal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void rawalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rawalActionPerformed
+        deposit depo = new deposit();
         try {
             balance.getText();
             funds.getText();
             int bal = Integer.parseInt(funds.getText());
             int amount = Integer.parseInt(balance.getText());
             if (amount <= bal) {
-                JOptionPane.showMessageDialog(this, "Amount is not enough.");
+                AccounData.balance += amount;
+                JOptionPane.showMessageDialog(this, "Deposited " + amount);
             } else {
                 JOptionPane.showMessageDialog(this, "Withdrawal Succesful......");
             }
