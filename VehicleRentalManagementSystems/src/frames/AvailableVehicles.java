@@ -200,6 +200,9 @@ public class AvailableVehicles extends javax.swing.JFrame {
         });
         jScrollPane6.setViewportView(tablemotor);
 
+        dash.setBackground(new java.awt.Color(255, 255, 255));
+        dash.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        dash.setForeground(new java.awt.Color(0, 0, 0));
         dash.setText("DashBoard");
         dash.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -262,7 +265,7 @@ public class AvailableVehicles extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(dash)
                 .addContainerGap())

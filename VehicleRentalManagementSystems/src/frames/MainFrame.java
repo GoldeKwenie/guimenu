@@ -106,8 +106,8 @@ public class MainFrame extends javax.swing.JFrame {
 
         LogIn.setBackground(new java.awt.Color(255, 255, 255));
         LogIn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        LogIn.setForeground(new java.awt.Color(0, 0, 204));
-        LogIn.setText("Confirm");
+        LogIn.setForeground(new java.awt.Color(0, 0, 0));
+        LogIn.setText("Log In");
         LogIn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 LogInActionPerformed(evt);
