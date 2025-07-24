@@ -14,6 +14,9 @@ import java.sql.ResultSet;
 import javax.swing.table.DefaultTableModel;
 public class MainFrame extends javax.swing.JFrame {
         public static String name;
+        public static String contactInfo;
+        public static String address;
+        public static String email;
         public static int rentaldays;
     /**
      * Creates new form MainFrame
@@ -199,14 +202,19 @@ public class MainFrame extends javax.swing.JFrame {
            
             name = namefield.getText();
             rentaldays = Integer.parseInt(rentdays.getText());
+            address = addressfield.getText();
+            contactInfo = contactfield.getText();
+            email = emailfield.getText();
+            
+           
             ps.setString(1, name);
-            ps.setString(2, addressfield.getText());
-            ps.setString(3, contactfield.getText());
-            ps.setString(4, emailfield.getText());
+            ps.setString(2, address);
+            ps.setString(3, contactInfo);
+            ps.setString(4, email);
             ps.setInt(5,rentaldays);
             ps.executeUpdate();
             
-            JOptionPane.showMessageDialog(this, "You are finally registered");
+            JOptionPane.showMessageDialog(this, "Log In Successfully");
             DashBoard dash = new DashBoard();
             dash.setVisible(true);
             dispose();

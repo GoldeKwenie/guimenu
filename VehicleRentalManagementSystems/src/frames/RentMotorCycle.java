@@ -139,8 +139,8 @@ public class RentMotorCycle extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(45, 45, 45)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 190, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rentmotor)
                     .addComponent(returnmotor)
@@ -229,29 +229,16 @@ public class RentMotorCycle extends javax.swing.JFrame {
     }
 
     String plate = tablemotor.getValueAt(row, 1).toString();
-    String client = MainFrame.name;
-    try (Connection con = getConnection()) {
-         PreparedStatement check = con.prepareStatement(  "SELECT * FROM rentals WHERE Plate_No = ? ");
-         check.setString(1, plate);
-         ResultSet rs = check.executeQuery();
-         
-         boolean matchFound = false;
-         while (rs.next()) {
-            if (rs.getString("Client_Name").equalsIgnoreCase(client)) {
-                matchFound = true;
-                break;
-            }
-         } if (!matchFound) {
-             JOptionPane.showMessageDialog(this, "You are not authorized to return this Vehicle");
-             return;
-         }
-         
+    
+//    
+        try (Connection con = getConnection()) { 
         PreparedStatement ps = con.prepareStatement("UPDATE motor SET Status = 'Available' WHERE Plate_No = ?");
         ps.setString(1, plate);
         ps.executeUpdate();
-
+        
+        
         JOptionPane.showMessageDialog(this, "Vehicle returned successfully.");
-        loadCarList(); // Refresh table
+        loadCarList(); 
 
     } catch (Exception e) {
         e.printStackTrace();

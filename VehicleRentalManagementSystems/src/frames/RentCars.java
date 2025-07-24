@@ -111,7 +111,7 @@ public class RentCars extends javax.swing.JFrame {
             }
         });
 
-        dash.setText("jButton1");
+        dash.setText("Back to DashBoard");
         dash.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dashActionPerformed(evt);
@@ -130,9 +130,9 @@ public class RentCars extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(165, 165, 165)
                         .addComponent(rentcar)
-                        .addGap(54, 54, 54)
+                        .addGap(38, 38, 38)
                         .addComponent(returncar)
-                        .addGap(65, 65, 65)
+                        .addGap(38, 38, 38)
                         .addComponent(dash)))
                 .addContainerGap(47, Short.MAX_VALUE))
         );
@@ -140,8 +140,8 @@ public class RentCars extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(53, 53, 53)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(254, 254, 254)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rentcar)
                     .addComponent(returncar)
@@ -180,6 +180,7 @@ public class RentCars extends javax.swing.JFrame {
            JOptionPane.showMessageDialog(this, "The car is already rented");
            return;
         }
+
          String plates = model.getValueAt(selected, 1).toString();
         double pricePerDay = Double.parseDouble(model.getValueAt(selected, 5).toString());
         double total = pricePerDay * MainFrame.rentaldays;
@@ -235,13 +236,14 @@ public class RentCars extends javax.swing.JFrame {
     String plate = tablecars.getValueAt(row, 1).toString();
 
     try (Connection con = getConnection()) {
-        PreparedStatement ps = con.prepareStatement("UPDATE cars SET Status = 'Available' WHERE Plate_No = ?");
-        ps.setString(1, plate);
-        ps.executeUpdate();
-
+        PreparedStatement ps = con.prepareStatement("UPDATE cars SET Status = 'Available' WHERE Plate_No =?");
+         ps.setString(1, plate);
+         ps.executeUpdate();
+         
         JOptionPane.showMessageDialog(this, "Car returned successfully.");
-        loadCarList(); // Refresh table
-
+        loadCarList();
+        
+    
     } catch (Exception e) {
         e.printStackTrace();
         JOptionPane.showMessageDialog(this, "Error during return.");
